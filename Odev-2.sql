@@ -7,6 +7,7 @@ cadde nvarchar(100),
 postaKodu nvarchar(20),
 telefon int,
 ulke nvarchar(50)
+ 
 );
 
 create table uyeler(
@@ -16,7 +17,9 @@ uyeSoyadi nvarchar(50) not null,
 uyeCinsiyet nvarchar(10),
 uyeMail nvarchar(100),
 uyeTelefon int,
+ 
 adresNo INT CONSTRAINT FK_uyeler_adresNo FOREIGN KEY(adresNo) REFERENCES adresler(adresNo)
+ 
 );
 
 CREATE TABLE kutuphane(
@@ -25,15 +28,14 @@ CREATE TABLE kutuphane(
  kutuphaneNo int not null identity(1,1) Primary Key,
  
  adresNo INT CONSTRAINT FK_kutuphane_adresno FOREIGN KEY(adresNo) REFERENCES adresler(adresNo)
+ 
 );
 
 CREATE TABLE yazarlar(
 yazarNo int identity(1,1) not null Primary Key,
 yazarAdi nvarchar(25),
 yazarSoyadi nvarchar(25)
-  
-  
-  
+ 
 );
 
 CREATE TABLE kategoriler(
@@ -44,11 +46,14 @@ CREATE TABLE kategoriler(
 
 CREATE TABLE kitaplar(
 sayfaSayisi int,
+kitapAdi nvarchar(100),
+
 yayinTarihi datetime not null,
 ISBN nvarchar(100) not null Primary Key,
 
 yazarNo INT CONSTRAINT FK_yazar_kitaplar FOREIGN KEY(yazarNo) REFERENCES yazarlar(yazarNo),
 kategoriNo INT CONSTRAINT FK_kategoriler_kitaplar FOREIGN KEY(kategoriNo) REFERENCES kategoriler(kategoriNo) 
+ 
 );
 
 
